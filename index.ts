@@ -1,16 +1,13 @@
+import { Events } from "discord.js";
 import { discordClient } from "./config";
 import { botToken } from "./config/discordClient";
-import { Events } from "discord.js";
-import { pingMessage } from "./services/messageServices";
-
-discordClient.once(Events.ClientReady, () =>
-  console.log(`✅ Logged in as ${discordClient.user?.tag}`)
-);
+import { MessageService } from "./services/messageServices";
 
 discordClient.on(Events.MessageCreate, async (message) => {
+  const messageService = new MessageService();
   if (message.author.bot) return;
 
-  if (message.content === "!ping") await pingMessage(message);
+  if (message.content === "!ping") await messageService.pingMessage(message);
 });
 
 discordClient.login(botToken);

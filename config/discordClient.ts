@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from "discord.js";
+import { Client, Events, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,5 +13,10 @@ const client = new Client({
   ],
 });
 
+client.once(Events.ClientReady, () =>
+  console.log(`✅ Logged in as ${client.user?.tag}`)
+);
+
 const discordClient = client;
+
 export { discordClient };
