@@ -15,5 +15,6 @@ const client = new discord_js_1.Client({
         discord_js_1.GatewayIntentBits.MessageContent,
     ],
 });
+client.once(discord_js_1.Events.ClientReady, () => console.log(`✅ Logged in as ${client.user?.tag}`));
 const discordClient = client;
 exports.discordClient = discordClient;
