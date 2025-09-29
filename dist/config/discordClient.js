@@ -15,6 +15,17 @@ const client = new discord_js_1.Client({
         discord_js_1.GatewayIntentBits.MessageContent,
     ],
 });
-client.once(discord_js_1.Events.ClientReady, () => console.log(`✅ Logged in as ${client.user?.tag}`));
+client.once(discord_js_1.Events.ClientReady, () => {
+    client.user?.setPresence({
+        status: discord_js_1.PresenceUpdateStatus.Idle,
+        activities: [
+            {
+                name: "🌌 Destiny Beyond Stars",
+                type: discord_js_1.ActivityType.Playing,
+            },
+        ],
+    });
+    console.log(`✅ Logged in as ${client.user?.tag}`);
+});
 const discordClient = client;
 exports.discordClient = discordClient;

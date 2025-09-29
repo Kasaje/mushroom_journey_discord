@@ -1,4 +1,10 @@
-import { Client, Events, GatewayIntentBits } from "discord.js";
+import {
+  ActivityType,
+  Client,
+  Events,
+  GatewayIntentBits,
+  PresenceUpdateStatus,
+} from "discord.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,9 +19,18 @@ const client = new Client({
   ],
 });
 
-client.once(Events.ClientReady, () =>
-  console.log(`✅ Logged in as ${client.user?.tag}`)
-);
+client.once(Events.ClientReady, () => {
+  client.user?.setPresence({
+    status: PresenceUpdateStatus.Idle,
+    activities: [
+      {
+        name: "🌌 Destiny Beyond Stars",
+        type: ActivityType.Playing,
+      },
+    ],
+  });
+  console.log(`✅ Logged in as ${client.user?.tag}`);
+});
 
 const discordClient = client;
 
