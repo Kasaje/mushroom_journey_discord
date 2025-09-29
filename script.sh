@@ -37,13 +37,7 @@ check_success() {
 }
 
 # Start of script
-print_header "🍄 Mushroom Journey Discord Bot - Build & Start"
-
-# Build phase
-print_header "📦 Building the project..."
-print_message $YELLOW "Running: npm run build"
-npm run build
-check_success "Build"
+print_header "🍄 Mushroom Journey Discord Bot - Start"
 
 # Start phase
 print_header "🚀 Starting the Discord bot..."
