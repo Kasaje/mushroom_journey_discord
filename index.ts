@@ -1,1 +1,3 @@
-console.log("Test start server");
+import { test } from "./services/test";
+
+test();
